@@ -1,21 +1,24 @@
 const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('option-buttons');
-const createCharacterButton = document.getElementById('create-character-btn');
+const createCharacterBtn = document.getElementById("create-character-btn");
 const nameInput = document.getElementById('name-input');
+
+createCharacterBtn.addEventListener("click", function() {
+  createCharacter();
+});
+
 function createCharacter() {
-  var kanin = "myImage"; // define and assign a string value to the variable "kanin"
-  var img = document.getElementById(kanin);
-  img.src = 'sky.jpg';
+  const name = nameInput.value;
+  state = { name };
+  showTextNode(1);
 }
 
-
 let state = {};
-
-createCharacterButton.addEventListener('click', createCharacter);
 
 function showTextNode(textNodeIndex) {
   let textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
   textElement.innerHTML = textNode.text;
+
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
@@ -39,12 +42,6 @@ function selectOption(option) {
   const nextTextNodeId = option.nextText;
   state = Object.assign(state, option.setState);
   showTextNode(nextTextNodeId);
-}
-
-function createCharacter() {
-  const name = nameInput.value;
-  state = { name };
-  showTextNode(1);
 }
 
 let textNodes = [
@@ -145,10 +142,10 @@ let textNodes = [
       }
     ]
   },
-    
+
   {
     id: 11,
-    text: 'You awaken in a church, with Rennyn Lankrana standing by your side. Confused and disoriented, you ask what happened. Rennyn explains that he had a vision of you being injured in the cave and followed you there from town. To his surprise, he found the female Forsaken healing you with her magical powers. Moved by her kindness, Rennyn brought her back to the village to teach others the art of healing. He tells you that you have completed your mission and offers you a reward - a choice between <span> a two-handed axe dealing 15 dmg or a staff with 19 dmg but slower speed.</span>',
+    text: 'You wake up in a church next to Rennyn Iankrana who says he had a vision of you being injured in a cave, followed you, found you and brought you here. He tells you that you completed your mission and offers you a reward of either a small artifact or a sum of gold. You have to decide which one to choose <span> a two-handed axe dealing 15 dmg or a staff with 19 dmg but slower speed.</span>',
     options: [
       {
         text: 'I choose the staff.',
@@ -237,7 +234,7 @@ let textNodes = [
   },
   {
     id: 17,
-    text: '"We choose to kill him as we have a mission to fulfill and he should not suffer any longer. A fight to the death ensues as the older man does not give up without a struggle. We emerge victorious and take his belongings before continuing on our journey.',
+    text: 'We choose to kill him as we have a mission to fulfill and he should not suffer any longer. A fight to the death ensues as the older man does not give up without a struggle. We emerge victorious and take his belongings before continuing on our journey.',
     options:[
       { 
         text:'We continue our journey towards the Violet Spider',
@@ -248,7 +245,7 @@ let textNodes = [
   },
   {
     id: 18,
-    text:'We come across a new road where we see a deep cave. Do we choose <span>to enter the cave</span> or <<span>continue our journey?</span>',
+    text:'We come across a new road where we see a deep cave. Do we choose <span>to enter the cave</span> or <span>continue our journey?</span>',
     options:[
       {
         text:'We enter the cave',
@@ -287,14 +284,14 @@ let textNodes = [
   },
   {
     id:22,
-    text: 'You wake up in a church where Rennyn Iankrana is standing by your side. You stand up and ask what happened, and Rennyn Lankrana tells you that he had a vision that you were injured inside the cave. He had followed you after you left the town. Rennyn Lankrana tells you that you have completed your mission and that he will give you a reward. You can choose between <span> a two-handed axe with 15 dmg</span> or <span>a staff with 19 dmg but slower attack speed.</span>',
+    text:'You wake up in a church next to Rennyn Iankrana who says he had a vision of you being injured in a cave, followed you, found you and brought you here. He tells you that you completed your mission and offers you a reward of either a small artifact or a sum of gold. You have to decide which one to choose <span> a two-handed axe dealing 15 dmg or a staff with 19 dmg but slower speed.</span>',
     options:[
       {
         text:'I choose the staff',
         nextText: 12
       },
       {
-        text: '"I choose the 2-handeds axe',
+        text: 'I choose the 2-handeds axe',
         nextText: 13
       }
     ]
